@@ -58,10 +58,10 @@ if __name__ == '__main__':
     tf = load_transform()  # image transformer
 
     # load the test image
-    if os.path.exists('test.jpg'):
-        os.remove('test.jpg')
-    img_url = 'http://places2.csail.mit.edu/imgs/demo/IMG_5970.JPG'
-    os.system('wget %s -q -O test.jpg' % img_url)
+    # if os.path.exists('test.jpg'):
+    #     os.remove('test.jpg')
+    # img_url = 'http://places2.csail.mit.edu/imgs/demo/IMG_5970.JPG'
+    # os.system('wget %s -q -O test.jpg' % img_url)
     img = Image.open('test.jpg')
     input_img = tf(img).unsqueeze(0)
 
@@ -70,7 +70,7 @@ if __name__ == '__main__':
     h_x = F.softmax(logit, 1).data.squeeze()
     probs, idx = h_x.sort(0, True)
 
-    print(img_url)
+   # print(img_url)
     # output the prediction of action category
     print('--Top Actions:')
     for i in range(0, 5):
